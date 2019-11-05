@@ -40,7 +40,7 @@
         <e p="Global.asax" t="Include" />
         <e p="Global.asax.cs" t="Include" />
         <e p="Models" t="Include">
-          <e p="ProgressBarExample.cs" t="Include" />
+          <e p="ProgressBarData.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />

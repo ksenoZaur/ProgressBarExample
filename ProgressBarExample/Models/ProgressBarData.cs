@@ -3,7 +3,7 @@
 namespace ProgressBarExample.Models
 {
     // Хранит инфомрацию о ходе выполнения процесса
-    public class ProgressBarExample
+    public class ProgressBarData
     {
         public int Percentage { get; set; }       // Процент выполнения
         public bool IsComplete { get; set; }      // Состояние: выполняется\завершен
