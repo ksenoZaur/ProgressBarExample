@@ -15,19 +15,25 @@
                     url: "/Home/ImportFile",
                     type: "POST",
                     success: function(data){
-                        alert("Окончание вычислительного процесса на сервере");
+                        //alert("Окончание вычислительного процесса на сервере");
                     }
                 });
                 
                 // Опрашиваем сервер, чтобы отслеживать
-                setInterval(
+                var timerId = setInterval(
                     function () {
                         $.ajax({
                             url: "/Home/GetProgress",
                             type: "POST",
+                            dataType: "json",
                             success: function(data){
                                 if( data != null)
-                                    alert( "Прибыли данные: " + data );
+                                {
+                                    $("#pg_progress").val(data.Percentage);
+                                    // Останваливаем отслеживание по завершению задачи
+                                    if(data.IsComplete == '1')
+                                        clearInterval(timerId);
+                                }
                                 else
                                     alert( "Данные недоступны");
                             }
@@ -40,6 +46,6 @@
 <body>
     <div>
         <button id="ImportBtn">Начало длительной оперции</button>
-        <progress max="100" value="25"></progress>
+        <progress id="pg_progress" max="100" value="0"></progress>
     </div>
 </body>
