@@ -8,9 +8,31 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")"></script>
     <script>
         $( document ).ready(function() {
-            $("#ImportBtn").click( function() {
-                alert("Начало продолжительной операции на сервере," +
-                 " запуск процесса отслеживания прогресса."); 
+            $("#ImportBtn").click( 
+                function() {
+                // Стартуем длительный процесс
+                $.ajax({
+                    url: "/Home/ImportFile",
+                    type: "POST",
+                    success: function(data){
+                        alert("Окончание вычислительного процесса на сервере");
+                    }
+                });
+                
+                // Опрашиваем сервер, чтобы отслеживать
+                setInterval(
+                    function () {
+                        $.ajax({
+                            url: "/Home/GetProgress",
+                            type: "POST",
+                            success: function(data){
+                                if( data != null)
+                                    alert( "Прибыли данные: " + data );
+                                else
+                                    alert( "Данные недоступны");
+                            }
+                        });
+                    }, 500);
             });
         });
     </script>
