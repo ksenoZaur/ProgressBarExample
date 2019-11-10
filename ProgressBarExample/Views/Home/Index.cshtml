@@ -38,14 +38,16 @@
                                     alert( "Данные недоступны");
                             }
                         });
-                    }, 500);
+                    }, 500
+                );
             });
         });
     </script>
 </head>
 <body>
-    <div>
-        <button id="ImportBtn">Начало длительной оперции</button>
-        <progress id="pg_progress" max="100" value="0"></progress>
+    <div >
+        <button class="btn btn-default" id="ImportBtn" style="width: 200px">Начало длительной оперции</button>
+        <br/>
+        <progress id="pg_progress" max="100" value="0" style="width: 200px"></progress>
     </div>
 </body>
